@@ -45,7 +45,6 @@ body.dark-bg {
   position: relative;
   z-index: 1;
 }
-/* 侧边栏 */
 .sidebar {
   background: var(--glass);
   backdrop-filter: blur(25px);
@@ -98,7 +97,6 @@ body.dark-bg {
 .timeline-dot { position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
 .timeline-title { font-size: 13.5px; font-weight: 600; }
 .timeline-date { font-size: 12px; opacity: 0.7; }
-/* 内容区 */
 .content-area { display: flex; flex-direction: column; gap: 25px; }
 .card {
   background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -113,7 +111,7 @@ body.dark-bg {
 .highlight-number { color: var(--accent); font-weight: 700; font-size: 1.15em; margin: 0 3px; }
 .language-tag { display: inline-block; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 500; margin-right: 6px; margin-bottom: 4px; background: rgba(132,157,195,0.57); color: #fff; font-family: 'Monaco','Menlo',monospace; }
 .data-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-left: 8px; }
-/* 贡献图 */
+.refresh-btn { font-size: 12px; color: var(--accent); cursor: pointer; text-decoration: underline; margin-left: 8px; }
 .contribution-chart { overflow-x: auto; min-height: 140px; }
 .contrib-grid-wrap { display: flex; gap: 4px; }
 .contrib-weekdays { display: flex; flex-direction: column; gap: 3px; margin-right: 5px; padding-top: 2px; }
@@ -130,12 +128,7 @@ body.dark-bg {
 .contrib-legend .lc { width: 13px; height: 13px; border-radius: 3px; }
 .contrib-tip { position: fixed; background: rgba(0,0,0,0.85); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 11px; pointer-events: none; z-index: 1000; transform: translateX(-50%) translateY(-100%); opacity: 0; transition: opacity .2s; border: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
 .contrib-tip.show { opacity: 1; }
-.contrib-loading { display: flex; align-items: center; justify-content: center; height: 120px; gap: 12px; opacity: 0.7; font-size: 13px; }
-.spinner { width: 26px; height: 26px; border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.contrib-fallback { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; padding: 10px 0; }
-.contrib-fallback a { color: var(--accent); text-decoration: none; }
-/* 论文 / 项目列表 */
+.contrib-summary { margin-top: 12px; font-size: 13px; opacity: .85; }
 .pub-list { display: flex; flex-direction: column; gap: 14px; }
 .pub-item { background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; transition: all .3s ease; }
 .pub-item:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
@@ -148,12 +141,10 @@ body.dark-bg {
 .badge-status { background: rgba(0,184,148,0.2); color: #55efc4; border: 1px solid rgba(0,184,148,0.4); }
 .badge-status.todo { background: rgba(253,203,110,0.2); color: #ffeaa7; border-color: rgba(253,203,110,0.4); }
 .badge-status.rebuttal { background: rgba(214,48,49,0.2); color: #ff7675; border-color: rgba(214,48,49,0.4); }
-/* 技能 */
 .skills-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px,1fr)); gap: 14px; }
 .skill-icon { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 10px 6px; text-align: center; font-size: 12px; transition: all .3s ease; }
 .skill-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
 .skill-icon i { display: block; font-size: 22px; color: var(--accent); margin-bottom: 5px; }
-/* GitHub 项目 */
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
 .proj-card { background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; padding: 16px; transition: all .3s ease; text-decoration: none; color: inherit; display: block; }
 .proj-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
@@ -161,7 +152,6 @@ body.dark-bg {
 .proj-card p { font-size: 12.5px; opacity: 0.8; line-height: 1.4; margin-bottom: 8px; }
 .proj-card .lang { font-size: 11px; }
 .proj-card .lang i { color: var(--accent); margin-right: 4px; }
-/* 背景切换 */
 .background-toggle { position: fixed; bottom: 80px; right: 20px; width: 50px; height: 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; transition: all .3s ease; z-index: 1000; font-size: 18px; }
 .background-toggle:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 footer { text-align: center; padding: 1rem 0 1.5rem; position: relative; }
@@ -179,7 +169,6 @@ footer a { color: var(--accent); text-decoration: none; }
 </head>
 <body>
 <div class="main-container">
-  <!-- 侧边栏 -->
   <aside class="sidebar">
     <div class="profile-section">
       <div class="profile-avatar">
@@ -230,7 +219,6 @@ footer a { color: var(--accent); text-decoration: none; }
     </div>
   </aside>
 
-  <!-- 内容区 -->
   <main class="content-area">
     <section class="card github-stats">
       <h2><i class="fa-solid fa-chart-line"></i> GitHub 数据</h2>
@@ -238,13 +226,386 @@ footer a { color: var(--accent); text-decoration: none; }
       <div class="stats-line"><span class="stats-label">关注者</span><span class="stats-text"><span class="highlight-number" id="gh-followers">0</span> 人</span></div>
       <div class="stats-line"><span class="stats-label">关注中</span><span class="stats-text"><span class="highlight-number" id="gh-following">2</span> 人</span></div>
       <div class="stats-line"><span class="stats-label">获得 Star</span><span class="stats-text"><span class="highlight-number" id="gh-stars">1</span> ★</span></div>
-      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">Python</span><span class="language-tag">HTML</span><span class="language-tag">C#</span></span><span class="data-note" id="gh-note">（实时刷新中…）</span></div>
+      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">Python</span><span class="language-tag">HTML</span><span class="language-tag">C#</span></span><span class="data-note" id="gh-note">（已同步至 2026-08-05）</span><span class="refresh-btn" onclick="refreshGitHub()">刷新</span></div>
     </section>
 
     <section class="card contribution-section">
       <h2><i class="fa-solid fa-calendar-days"></i> 贡献活跃度</h2>
       <div class="contribution-chart" id="contrib">
-        <div class="contrib-loading"><div class="spinner"></div><span>加载贡献图…</span></div>
+        <div class="contrib-grid-wrap">
+          <div class="contrib-weekdays"><span></span><span>一</span><span></span><span>三</span><span></span><span>五</span><span></span></div>
+          <div class="contrib-grid">
+          <div class="contrib-cell " data-date="2025-08-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-08-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-05" data-count="0"></div>
+          <div class="contrib-cell l1" data-date="2025-09-06" data-count="1"></div>
+          <div class="contrib-cell " data-date="2025-09-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-09-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-10-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-18" data-count="0"></div>
+          <div class="contrib-cell l3" data-date="2025-11-19" data-count="6"></div>
+          <div class="contrib-cell l4" data-date="2025-11-20" data-count="9"></div>
+          <div class="contrib-cell " data-date="2025-11-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-11-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2025-12-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-23" data-count="0"></div>
+          <div class="contrib-cell l4" data-date="2026-01-24" data-count="7"></div>
+          <div class="contrib-cell " data-date="2026-01-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-01-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-02-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-01" data-count="0"></div>
+          <div class="contrib-cell l1" data-date="2026-03-02" data-count="2"></div>
+          <div class="contrib-cell " data-date="2026-03-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-12" data-count="0"></div>
+          <div class="contrib-cell l2" data-date="2026-03-13" data-count="3"></div>
+          <div class="contrib-cell " data-date="2026-03-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-03-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-04-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-05-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-06-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-04" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-05" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-06" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-07" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-08" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-09" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-10" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-11" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-12" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-13" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-14" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-15" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-16" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-17" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-18" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-19" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-20" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-21" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-22" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-23" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-24" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-25" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-26" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-27" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-28" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-29" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-30" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-07-31" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-08-01" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-08-02" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-08-03" data-count="0"></div>
+          <div class="contrib-cell " data-date="2026-08-04" data-count="0"></div>
+          <div class="contrib-cell l4" data-date="2026-08-05" data-count="8"></div>
+          </div>
+        </div>
+        <div class="contrib-summary">过去一年共 <span class="highlight-number">36</span> 次贡献</div>
       </div>
       <div class="contrib-legend">
         <span>少</span>
@@ -279,13 +640,36 @@ footer a { color: var(--accent); text-decoration: none; }
     <section class="card">
       <h2><i class="fa-solid fa-folder-open"></i> GitHub 项目</h2>
       <div class="proj-grid" id="projects">
-        <a class="proj-card" href="https://github.com/Jiancheng25/Jiancheng25.github.io" target="_blank"><h3><i class="fa-brands fa-github"></i> Jiancheng25.github.io</h3><p>王建成 · 个人主页</p><div class="lang"><i class="fa-solid fa-code"></i>HTML</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/PPT" target="_blank"><h3><i class="fa-brands fa-github"></i> PPT</h3><p>记录我的科研绘图</p><div class="lang"><i class="fa-solid fa-code"></i>C#</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/domain-adaptation-2026" target="_blank"><h3><i class="fa-brands fa-github"></i> domain-adaptation-2026</h3><p>2026 Domain adaptation List</p><div class="lang">★ 1</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/dreamerv3-atk" target="_blank"><h3><i class="fa-brands fa-github"></i> dreamerv3-atk</h3><p>DreamerV3 with behaviour cloning distill</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/GLA" target="_blank"><h3><i class="fa-brands fa-github"></i> GLA</h3><p>—</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/software_construction" target="_blank"><h3><i class="fa-brands fa-github"></i> software_construction</h3><p>—</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
-        <a class="proj-card" href="https://github.com/Jiancheng25/img" target="_blank"><h3><i class="fa-brands fa-github"></i> img</h3><p>Typora_Use</p><div class="lang"></div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/PPT" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> PPT</h3>
+      <p>记录我的科研绘图</p>
+      <div class="lang"><i class="fa-solid fa-code"></i>C# </div>
+    </a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/domain-adaptation-2026" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> domain-adaptation-2026</h3>
+      <p>2026 Domain adaptation List</p>
+      <div class="lang"> · ★ 1</div>
+    </a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/dreamerv3-atk" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> dreamerv3-atk</h3>
+      <p>DreamerV3 with behaviour cloning distillation (Loss A: NLL + Loss B: Value-weighted)</p>
+      <div class="lang"><i class="fa-solid fa-code"></i>Python </div>
+    </a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/GLA" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> GLA</h3>
+      <p>—</p>
+      <div class="lang"><i class="fa-solid fa-code"></i>Python </div>
+    </a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/software_construction" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> software_construction</h3>
+      <p>—</p>
+      <div class="lang"><i class="fa-solid fa-code"></i>Python </div>
+    </a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/img" target="_blank">
+      <h3><i class="fa-brands fa-github"></i> img</h3>
+      <p>Typora_Use</p>
+      <div class="lang"> </div>
+    </a>
       </div>
     </section>
   </main>
@@ -302,7 +686,6 @@ footer a { color: var(--accent); text-decoration: none; }
 <script>
 const USER = "Jiancheng25";
 
-// ---- 论文数据（来自简历）----
 const PUBLICATIONS = [
   { t:"Robust Label Propagation and Graph Embedding for Cross-Domain Image Classification", v:"IEEE IoT Journal", y:"2025", r:"二作", s:"published" },
   { t:"Class-Conditioned Optimal Transport-based Sample Selection for Deep Adaptation Networks", v:"ACBD", y:"2025", r:"共同作者", s:"published" },
@@ -332,20 +715,20 @@ function renderPubs() {
   }).join("");
 }
 
-// ---- GitHub 用户数据（实时拉取，失败后保留页面上的 fallback 数据）----
 async function githubJson(url) {
   const r = await fetch(url, { headers: { Accept: "application/vnd.github.v3+json" }, cache: "no-store" });
   if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
   return r.json();
 }
 
-async function loadGitHub() {
+async function refreshGitHub() {
   const note = document.getElementById("gh-note");
+  note.textContent = "（刷新中…）";
   try {
     const u = await githubJson(`https://api.github.com/users/${USER}`);
-    document.getElementById("gh-repos").textContent = u.public_repos ?? 7;
-    document.getElementById("gh-followers").textContent = u.followers ?? 0;
-    document.getElementById("gh-following").textContent = u.following ?? 2;
+    document.getElementById("gh-repos").textContent = u.public_repos ?? document.getElementById("gh-repos").textContent;
+    document.getElementById("gh-followers").textContent = u.followers ?? document.getElementById("gh-followers").textContent;
+    document.getElementById("gh-following").textContent = u.following ?? document.getElementById("gh-following").textContent;
 
     const repos = await githubJson(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`);
     if (Array.isArray(repos)) {
@@ -354,70 +737,12 @@ async function loadGitHub() {
       const langCount = {};
       repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language]||0)+1; });
       const top = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([l]) => `<span class="language-tag">${l}</span>`).join("");
-      document.getElementById("gh-langs").innerHTML = top || '<span class="language-tag">—</span>';
-      renderProjects(repos);
-      note.textContent = "（已实时同步）";
+      if (top) document.getElementById("gh-langs").innerHTML = top;
     }
+    note.textContent = "（已实时同步）";
   } catch (e) {
-    console.warn("GitHub 实时数据拉取失败，已显示缓存数据:", e);
-    note.textContent = "（缓存数据，实时刷新失败）";
-  }
-}
-
-function renderProjects(repos) {
-  const box = document.getElementById("projects");
-  if (!Array.isArray(repos) || !repos.length) return; // 保留 HTML 中的 fallback 项目卡片
-  const list = repos.filter(r => r.name.toLowerCase() !== "jiancheng25.github.io").slice(0, 9);
-  box.innerHTML = list.map(r => `
-    <a class="proj-card" href="${r.html_url}" target="_blank">
-      <h3><i class="fa-brands fa-github"></i> ${r.name}</h3>
-      <p>${r.description ? r.description : "—"}</p>
-      <div class="lang">${r.language ? `<i class="fa-solid fa-code"></i>${r.language}` : ""} ${r.stargazers_count ? "· ★ " + r.stargazers_count : ""}</div>
-    </a>`).join("");
-}
-
-// ---- 贡献图（公开第三方 API，失败后显示 fallback）----
-async function loadContrib() {
-  const box = document.getElementById("contrib");
-  try {
-    const data = await fetch(`https://github-contributions-api.jogruber.de/v4/${USER}`, { cache: "no-store" }).then(r => r.json());
-    const contribs = data.contributions || [];
-    if (!contribs.length) { box.innerHTML = '<div style="opacity:.7;font-size:13px">暂无贡献数据</div>'; return; }
-    const counts = {};
-    contribs.forEach(c => counts[c.date] = c);
-    const end = new Date(contribs[contribs.length-1].date + "T00:00:00");
-    const start = new Date(end); start.setDate(start.getDate() - 364);
-    const cur = new Date(start);
-    cur.setDate(cur.getDate() - cur.getDay());
-    const grid = [];
-    let total = 0;
-    while (cur <= end) {
-      const week = [];
-      for (let d = 0; d < 7; d++) {
-        const key = cur.toISOString().slice(0,10);
-        const c = counts[key];
-        if (c) { week.push(c); total += c.count; } else week.push({ date: key, count: 0, level: 0 });
-        cur.setDate(cur.getDate() + 1);
-      }
-      grid.push(week);
-    }
-    const wd = ["日","一","二","三","四","五","六"].map((x,i)=> (i%2? `<span>${x}</span>`:`<span></span>`)).join("");
-    let cells = "";
-    grid.forEach(week => week.forEach(day => {
-      cells += `<div class="contrib-cell ${day.level? 'l'+day.level:''}" data-date="${day.date}" data-count="${day.count}"></div>`;
-    }));
-    box.innerHTML = `<div class="contrib-grid-wrap">
-        <div class="contrib-weekdays">${wd}</div>
-        <div class="contrib-grid">${cells}</div>
-      </div>
-      <div style="margin-top:12px;font-size:13px;opacity:.85">过去一年共 <span class="highlight-number">${total}</span> 次贡献</div>`;
-    bindTip();
-  } catch (e) {
-    box.innerHTML = `<div class="contrib-fallback">
-      <i class="fa-solid fa-triangle-exclamation" style="color:var(--accent2)"></i>
-      贡献图实时加载失败（浏览器端跨域 / 限流）。<br>
-      可前往 <a href="https://github.com/${USER}" target="_blank">github.com/${USER}</a> 查看完整贡献记录。
-    </div>`;
+    console.warn("实时刷新失败，保留静态数据:", e);
+    note.textContent = "（静态数据，实时刷新失败）";
   }
 }
 
@@ -434,14 +759,12 @@ function bindTip() {
   });
 }
 
-// ---- 背景切换 ----
 document.getElementById("bgToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-bg");
 });
 
 renderPubs();
-loadGitHub();
-loadContrib();
+bindTip();
 </script>
 </body>
 </html>
