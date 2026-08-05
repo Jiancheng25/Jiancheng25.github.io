@@ -112,6 +112,7 @@ body.dark-bg {
 .stats-text { color: rgba(255,255,255,0.95); flex: 1; }
 .highlight-number { color: var(--accent); font-weight: 700; font-size: 1.15em; margin: 0 3px; }
 .language-tag { display: inline-block; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 500; margin-right: 6px; margin-bottom: 4px; background: rgba(132,157,195,0.57); color: #fff; font-family: 'Monaco','Menlo',monospace; }
+.data-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-left: 8px; }
 /* 贡献图 */
 .contribution-chart { overflow-x: auto; min-height: 140px; }
 .contrib-grid-wrap { display: flex; gap: 4px; }
@@ -132,6 +133,8 @@ body.dark-bg {
 .contrib-loading { display: flex; align-items: center; justify-content: center; height: 120px; gap: 12px; opacity: 0.7; font-size: 13px; }
 .spinner { width: 26px; height: 26px; border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.contrib-fallback { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; padding: 10px 0; }
+.contrib-fallback a { color: var(--accent); text-decoration: none; }
 /* 论文 / 项目列表 */
 .pub-list { display: flex; flex-direction: column; gap: 14px; }
 .pub-item { background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; transition: all .3s ease; }
@@ -231,11 +234,11 @@ footer a { color: var(--accent); text-decoration: none; }
   <main class="content-area">
     <section class="card github-stats">
       <h2><i class="fa-solid fa-chart-line"></i> GitHub 数据</h2>
-      <div class="stats-line"><span class="stats-label">公开仓库</span><span class="stats-text"><span class="highlight-number" id="gh-repos">--</span> 个</span></div>
-      <div class="stats-line"><span class="stats-label">关注者</span><span class="stats-text"><span class="highlight-number" id="gh-followers">--</span> 人</span></div>
-      <div class="stats-line"><span class="stats-label">关注中</span><span class="stats-text"><span class="highlight-number" id="gh-following">--</span> 人</span></div>
-      <div class="stats-line"><span class="stats-label">获得 Star</span><span class="stats-text"><span class="highlight-number" id="gh-stars">--</span> ★</span></div>
-      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">加载中…</span></span></div>
+      <div class="stats-line"><span class="stats-label">公开仓库</span><span class="stats-text"><span class="highlight-number" id="gh-repos">7</span> 个</span></div>
+      <div class="stats-line"><span class="stats-label">关注者</span><span class="stats-text"><span class="highlight-number" id="gh-followers">0</span> 人</span></div>
+      <div class="stats-line"><span class="stats-label">关注中</span><span class="stats-text"><span class="highlight-number" id="gh-following">2</span> 人</span></div>
+      <div class="stats-line"><span class="stats-label">获得 Star</span><span class="stats-text"><span class="highlight-number" id="gh-stars">1</span> ★</span></div>
+      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">Python</span><span class="language-tag">HTML</span><span class="language-tag">C#</span></span><span class="data-note" id="gh-note">（实时刷新中…）</span></div>
     </section>
 
     <section class="card contribution-section">
@@ -275,7 +278,15 @@ footer a { color: var(--accent); text-decoration: none; }
 
     <section class="card">
       <h2><i class="fa-solid fa-folder-open"></i> GitHub 项目</h2>
-      <div class="proj-grid" id="projects"><span style="opacity:.7;font-size:13px">加载中…</span></div>
+      <div class="proj-grid" id="projects">
+        <a class="proj-card" href="https://github.com/Jiancheng25/Jiancheng25.github.io" target="_blank"><h3><i class="fa-brands fa-github"></i> Jiancheng25.github.io</h3><p>王建成 · 个人主页</p><div class="lang"><i class="fa-solid fa-code"></i>HTML</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/PPT" target="_blank"><h3><i class="fa-brands fa-github"></i> PPT</h3><p>记录我的科研绘图</p><div class="lang"><i class="fa-solid fa-code"></i>C#</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/domain-adaptation-2026" target="_blank"><h3><i class="fa-brands fa-github"></i> domain-adaptation-2026</h3><p>2026 Domain adaptation List</p><div class="lang">★ 1</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/dreamerv3-atk" target="_blank"><h3><i class="fa-brands fa-github"></i> dreamerv3-atk</h3><p>DreamerV3 with behaviour cloning distill</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/GLA" target="_blank"><h3><i class="fa-brands fa-github"></i> GLA</h3><p>—</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/software_construction" target="_blank"><h3><i class="fa-brands fa-github"></i> software_construction</h3><p>—</p><div class="lang"><i class="fa-solid fa-code"></i>Python</div></a>
+        <a class="proj-card" href="https://github.com/Jiancheng25/img" target="_blank"><h3><i class="fa-brands fa-github"></i> img</h3><p>Typora_Use</p><div class="lang"></div></a>
+      </div>
     </section>
   </main>
 </div>
@@ -321,14 +332,22 @@ function renderPubs() {
   }).join("");
 }
 
-// ---- GitHub 用户数据 ----
+// ---- GitHub 用户数据（实时拉取，失败后保留页面上的 fallback 数据）----
+async function githubJson(url) {
+  const r = await fetch(url, { headers: { Accept: "application/vnd.github.v3+json" }, cache: "no-store" });
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
+
 async function loadGitHub() {
+  const note = document.getElementById("gh-note");
   try {
-    const u = await fetch(`https://api.github.com/users/${USER}`).then(r => r.json());
-    document.getElementById("gh-repos").textContent = u.public_repos ?? "--";
-    document.getElementById("gh-followers").textContent = u.followers ?? "--";
-    document.getElementById("gh-following").textContent = u.following ?? "--";
-    const repos = await fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`).then(r => r.json());
+    const u = await githubJson(`https://api.github.com/users/${USER}`);
+    document.getElementById("gh-repos").textContent = u.public_repos ?? 7;
+    document.getElementById("gh-followers").textContent = u.followers ?? 0;
+    document.getElementById("gh-following").textContent = u.following ?? 2;
+
+    const repos = await githubJson(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`);
     if (Array.isArray(repos)) {
       const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
       document.getElementById("gh-stars").textContent = stars;
@@ -337,16 +356,18 @@ async function loadGitHub() {
       const top = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([l]) => `<span class="language-tag">${l}</span>`).join("");
       document.getElementById("gh-langs").innerHTML = top || '<span class="language-tag">—</span>';
       renderProjects(repos);
+      note.textContent = "（已实时同步）";
     }
   } catch (e) {
-    document.getElementById("gh-langs").innerHTML = '<span class="language-tag">加载失败</span>';
+    console.warn("GitHub 实时数据拉取失败，已显示缓存数据:", e);
+    note.textContent = "（缓存数据，实时刷新失败）";
   }
 }
 
 function renderProjects(repos) {
   const box = document.getElementById("projects");
-  if (!Array.isArray(repos) || !repos.length) { box.innerHTML = '<span style="opacity:.7;font-size:13px">暂无公开项目</span>'; return; }
-  const list = repos.filter(r => r.name.toLowerCase() !== "jiajiancheng25.github.io").slice(0, 9);
+  if (!Array.isArray(repos) || !repos.length) return; // 保留 HTML 中的 fallback 项目卡片
+  const list = repos.filter(r => r.name.toLowerCase() !== "jiancheng25.github.io").slice(0, 9);
   box.innerHTML = list.map(r => `
     <a class="proj-card" href="${r.html_url}" target="_blank">
       <h3><i class="fa-brands fa-github"></i> ${r.name}</h3>
@@ -355,29 +376,27 @@ function renderProjects(repos) {
     </a>`).join("");
 }
 
-// ---- 贡献图（公开 API，无需鉴权）----
+// ---- 贡献图（公开第三方 API，失败后显示 fallback）----
 async function loadContrib() {
   const box = document.getElementById("contrib");
   try {
-    const data = await fetch(`https://github-contributions-api.jogruber.de/v4/${USER}`).then(r => r.json());
+    const data = await fetch(`https://github-contributions-api.jogruber.de/v4/${USER}`, { cache: "no-store" }).then(r => r.json());
     const contribs = data.contributions || [];
     if (!contribs.length) { box.innerHTML = '<div style="opacity:.7;font-size:13px">暂无贡献数据</div>'; return; }
     const counts = {};
     contribs.forEach(c => counts[c.date] = c);
-    // 以最近一天为终点，向前取 53 周
     const end = new Date(contribs[contribs.length-1].date + "T00:00:00");
     const start = new Date(end); start.setDate(start.getDate() - 364);
-    // 对齐到周日
-    const grid = [];
     const cur = new Date(start);
     cur.setDate(cur.getDate() - cur.getDay());
-    const total = { lastYear: 0 };
+    const grid = [];
+    let total = 0;
     while (cur <= end) {
       const week = [];
       for (let d = 0; d < 7; d++) {
         const key = cur.toISOString().slice(0,10);
         const c = counts[key];
-        if (c) { week.push(c); total.lastYear += c.count; } else week.push({ date: key, count: 0, level: 0 });
+        if (c) { week.push(c); total += c.count; } else week.push({ date: key, count: 0, level: 0 });
         cur.setDate(cur.getDate() + 1);
       }
       grid.push(week);
@@ -391,10 +410,14 @@ async function loadContrib() {
         <div class="contrib-weekdays">${wd}</div>
         <div class="contrib-grid">${cells}</div>
       </div>
-      <div style="margin-top:12px;font-size:13px;opacity:.85">过去一年共 <span class="highlight-number">${total.lastYear}</span> 次贡献</div>`;
+      <div style="margin-top:12px;font-size:13px;opacity:.85">过去一年共 <span class="highlight-number">${total}</span> 次贡献</div>`;
     bindTip();
   } catch (e) {
-    box.innerHTML = '<div style="opacity:.7;font-size:13px">贡献图加载失败（可能是网络限制）</div>';
+    box.innerHTML = `<div class="contrib-fallback">
+      <i class="fa-solid fa-triangle-exclamation" style="color:var(--accent2)"></i>
+      贡献图实时加载失败（浏览器端跨域 / 限流）。<br>
+      可前往 <a href="https://github.com/${USER}" target="_blank">github.com/${USER}</a> 查看完整贡献记录。
+    </div>`;
   }
 }
 
