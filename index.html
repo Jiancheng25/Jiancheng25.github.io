@@ -146,16 +146,30 @@ body.dark-bg {
   .welcome-card:hover .wc-body { max-height: 0; padding: 0 16px; }
   .welcome-card.active .wc-body { max-height: 220px; padding: 2px 16px 16px; }
 }
-.timeline-section { border-left: 2px solid rgba(255,255,255,0.3); padding-left: 18px; margin-left: 6px; }
-.timeline-item { position: relative; margin-bottom: 18px; }
-.timeline-dot { position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
-.timeline-title { font-size: 13.5px; font-weight: 600; }
+.timeline-section { padding-left: 26px; }
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item:not(:last-child)::before {
+  content: ''; position: absolute; z-index: 0;
+  left: -21px; top: 6px; bottom: -26px; width: 2px;
+  background: linear-gradient(180deg, rgba(116,185,255,0.95), rgba(255,255,255,0.3));
+}
+.timeline-dot {
+  position: absolute; z-index: 1; left: -26px; top: 0;
+  width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 3px rgba(116,185,255,0.14), 0 0 10px rgba(116,185,255,0.45);
+}
+.timeline-title { font-size: 13.5px; font-weight: 600; line-height: 1.35; }
 .timeline-date { font-size: 12px; opacity: 0.7; }
-.content-area { display: flex; flex-direction: column; gap: 25px; }
+.timeline-note { margin-top: 2px; font-size: 12px; opacity: 0.82; }
+.timeline-note a { color: var(--accent); text-decoration: none; }
+.timeline-note a:hover { text-decoration: underline; }
+.content-area { display: flex; flex-direction: column; gap: 25px; min-width: 0; }
 .card {
   background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
   border-radius: 20px; padding: 25px; border: 1px solid var(--border);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1); min-width: 0;
 }
 .card h2 { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 18px; font-weight: 600; }
 .card h2 i { color: #fff; }
@@ -164,8 +178,19 @@ body.dark-bg {
 .stats-text { color: rgba(255,255,255,0.95); flex: 1; }
 .highlight-number { color: var(--accent); font-weight: 700; font-size: 1.15em; margin: 0 3px; }
 .language-tag { display: inline-block; padding: 2px 8px; border-radius: 5px; font-size: 12px; font-weight: 500; margin-right: 6px; margin-bottom: 4px; background: rgba(132,157,195,0.57); color: #fff; font-family: 'Monaco','Menlo',monospace; }
-.data-note { font-size: 12px; color: rgba(255,255,255,0.5); margin-left: 8px; }
-.refresh-btn { font-size: 12px; color: var(--accent); cursor: pointer; text-decoration: underline; margin-left: 8px; }
+.data-note { font-size: 12px; color: rgba(255,255,255,0.62); margin-left: 8px; }
+.refresh-btn {
+  display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0;
+  margin-left: 8px; padding: 5px 10px;
+  color: #fff; background: rgba(116,185,255,0.18);
+  border: 1px solid rgba(116,185,255,0.45); border-radius: 12px;
+  font: inherit; font-size: 12px; cursor: pointer; transition: all .25s ease;
+}
+.refresh-btn:hover { background: rgba(116,185,255,0.32); transform: translateY(-1px); }
+.refresh-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.refresh-btn:disabled { cursor: wait; opacity: 0.72; transform: none; }
+.refresh-btn.is-loading i { animation: refresh-spin .8s linear infinite; }
+@keyframes refresh-spin { to { transform: rotate(360deg); } }
 .contribution-chart { overflow-x: auto; min-height: 140px; }
 .contrib-grid-wrap { display: flex; gap: 4px; }
 .contrib-weekdays { display: flex; flex-direction: column; gap: 3px; margin-right: 5px; padding-top: 2px; }
@@ -272,8 +297,20 @@ footer a { color: var(--accent); text-decoration: none; }
     <div class="timeline-section">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+        <div class="timeline-title">南方科技大学 · 研究助理（RA）</div>
+        <div class="timeline-date">2026.09 – 至今</div>
+        <div class="timeline-note">导师：<a href="https://www.sustech.edu.cn/zh/faculties/wangzhenyi.html" target="_blank" rel="noopener noreferrer">王真伊 副教授</a></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-title">中山大学 · 访问学习</div>
+        <div class="timeline-date">2025.08 – 2026.06</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
         <div class="timeline-title">安徽大学 · 计算机技术（硕士）</div>
         <div class="timeline-date">2024.09 – 至今</div>
+        <div class="timeline-note">导师：<a href="https://cs.ahu.edu.cn/2021/1216/c20806a277197/page.htm" target="_blank" rel="noopener noreferrer">严远亭 教授</a></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
@@ -295,7 +332,7 @@ footer a { color: var(--accent); text-decoration: none; }
       <div class="stats-line"><span class="stats-label">关注者</span><span class="stats-text"><span class="highlight-number" id="gh-followers">0</span> 人</span></div>
       <div class="stats-line"><span class="stats-label">关注中</span><span class="stats-text"><span class="highlight-number" id="gh-following">2</span> 人</span></div>
       <div class="stats-line"><span class="stats-label">获得 Star</span><span class="stats-text"><span class="highlight-number" id="gh-stars">1</span> ★</span></div>
-      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">Python</span><span class="language-tag">HTML</span><span class="language-tag">C#</span></span><span class="data-note" id="gh-note">（已同步至 2026-08-05）</span><span class="refresh-btn" onclick="refreshGitHub()">刷新</span></div>
+      <div class="stats-line"><span class="stats-label">常用语言</span><span class="stats-text" id="gh-langs"><span class="language-tag">Python</span><span class="language-tag">HTML</span><span class="language-tag">C#</span></span><span class="data-note" id="gh-note" aria-live="polite">（正在检查更新…）</span><button class="refresh-btn" id="gh-refresh" type="button"><i class="fa-solid fa-rotate-right"></i><span>刷新</span></button></div>
     </section>
 
     <section class="card contribution-section">
@@ -763,7 +800,10 @@ const PUBLICATIONS = [
   { t:"Domain Adaptive Object Detection via Dual-Stream Bilevel-Cycle Optimization", v:"ECCV", y:"2026", r:"共同作者", s:"published" },
   { t:"DreamStealer: Black-Box Policy Extraction from World-Model Agents", v:"NeurIPS", y:"2026", r:"二作", s:"todo" },
   { t:"CIVA: Critic-Induced Value-Subspace Attacks on Visual World-Model Agents", v:"NeurIPS", y:"2026", r:"一作", s:"rebuttal" },
+  { t:"Two-Stage Isotropic Whitening for Source-Free Test-Time Adaptation", v:"ICLR", y:"2027", r:"共同作者", s:"todo" },
+  { t:"Data Attribution without a Clean Reference: Influence-Guided Reweighting for Corruption-Robust Offline RL", v:"AAAI", y:"2027", r:"共同作者", s:"todo" },
   { t:"PanWSR: Frequency-Conditioned Wavelet Scale-Recurrent Fusion for Pansharpening", v:"AAAI", y:"2027", r:"一作", s:"todo" },
+  { t:"Action Intent as a Bridge: Transferring Manipulation Knowledge from Human-Centric Videos to Robots", v:"AAAI", y:"2027", r:"共同作者", s:"todo" },
   { t:"LiteOT-Fuse: Lightweight RGB–Thermal Semantic Segmentation via Spatially Constrained Local Optimal Transport", v:"ICESS 2026", y:"2026", r:"一作", s:"todo" }
 ];
 const STATUS_TEXT = { published:"已发表", todo:"在投", rebuttal:"Rebuttal 中" };
@@ -786,33 +826,117 @@ function renderPubs() {
 
 async function githubJson(url) {
   const r = await fetch(url, { headers: { Accept: "application/vnd.github.v3+json" }, cache: "no-store" });
-  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  if (!r.ok) {
+    const error = new Error(`${r.status} ${r.statusText}`);
+    error.status = r.status;
+    error.rateLimitReset = r.headers.get("x-ratelimit-reset");
+    throw error;
+  }
   return r.json();
 }
 
-async function refreshGitHub() {
-  const note = document.getElementById("gh-note");
-  note.textContent = "（刷新中…）";
-  try {
-    const u = await githubJson(`https://api.github.com/users/${USER}`);
-    document.getElementById("gh-repos").textContent = u.public_repos ?? document.getElementById("gh-repos").textContent;
-    document.getElementById("gh-followers").textContent = u.followers ?? document.getElementById("gh-followers").textContent;
-    document.getElementById("gh-following").textContent = u.following ?? document.getElementById("gh-following").textContent;
+const GITHUB_CACHE_KEY = "jiancheng25-github-stats-v1";
+const GITHUB_CACHE_MAX_AGE = 30 * 60 * 1000;
+let githubRefreshing = false;
 
+function applyGitHubSnapshot(snapshot) {
+  if (!snapshot) return;
+  if (snapshot.repos != null) document.getElementById("gh-repos").textContent = snapshot.repos;
+  if (snapshot.followers != null) document.getElementById("gh-followers").textContent = snapshot.followers;
+  if (snapshot.following != null) document.getElementById("gh-following").textContent = snapshot.following;
+  if (snapshot.stars != null) document.getElementById("gh-stars").textContent = snapshot.stars;
+  if (Array.isArray(snapshot.languages) && snapshot.languages.length) {
+    document.getElementById("gh-langs").innerHTML = snapshot.languages.map(l => `<span class="language-tag">${l}</span>`).join("");
+  }
+}
+
+function readGitHubCache() {
+  try { return JSON.parse(localStorage.getItem(GITHUB_CACHE_KEY)); }
+  catch (_) { return null; }
+}
+
+function writeGitHubCache(snapshot) {
+  try { localStorage.setItem(GITHUB_CACHE_KEY, JSON.stringify(snapshot)); }
+  catch (_) { /* 浏览器禁用本地存储时仍可正常刷新 */ }
+}
+
+function syncTimeText(timestamp) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false
+  }).format(new Date(timestamp));
+}
+
+async function refreshGitHub({ silent = false } = {}) {
+  if (githubRefreshing) return;
+  githubRefreshing = true;
+  const note = document.getElementById("gh-note");
+  const button = document.getElementById("gh-refresh");
+  button.disabled = true;
+  button.classList.add("is-loading");
+  button.querySelector("span").textContent = "刷新中";
+  note.textContent = silent ? "（正在检查更新…）" : "（正在连接 GitHub…）";
+
+  const cached = readGitHubCache();
+  const snapshot = cached ? { ...cached } : { timestamp: 0 };
+  let updated = false;
+  let rateLimited = false;
+
+  try {
     const repos = await githubJson(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`);
     if (Array.isArray(repos)) {
-      const stars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
-      document.getElementById("gh-stars").textContent = stars;
+      snapshot.repos = repos.length;
+      snapshot.stars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
       const langCount = {};
       repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language]||0)+1; });
-      const top = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([l]) => `<span class="language-tag">${l}</span>`).join("");
-      if (top) document.getElementById("gh-langs").innerHTML = top;
+      snapshot.languages = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([language]) => language);
+      updated = true;
     }
-    note.textContent = "（已实时同步）";
   } catch (e) {
-    console.warn("实时刷新失败，保留静态数据:", e);
-    note.textContent = "（静态数据，实时刷新失败）";
+    rateLimited = e.status === 403 || e.status === 429;
+    console.warn("仓库及语言数据刷新失败:", e);
   }
+
+  if (!rateLimited) {
+    try {
+      const user = await githubJson(`https://api.github.com/users/${USER}`);
+      snapshot.repos = user.public_repos ?? snapshot.repos;
+      snapshot.followers = user.followers ?? snapshot.followers;
+      snapshot.following = user.following ?? snapshot.following;
+      updated = true;
+    } catch (e) {
+      rateLimited = e.status === 403 || e.status === 429;
+      console.warn("用户数据刷新失败:", e);
+    }
+  }
+
+  if (updated) {
+    snapshot.timestamp = Date.now();
+    applyGitHubSnapshot(snapshot);
+    writeGitHubCache(snapshot);
+    note.textContent = `（更新于 ${syncTimeText(snapshot.timestamp)}）`;
+  } else if (cached) {
+    applyGitHubSnapshot(cached);
+    note.textContent = rateLimited
+      ? `（GitHub 限额，显示 ${syncTimeText(cached.timestamp)} 缓存）`
+      : `（网络异常，显示 ${syncTimeText(cached.timestamp)} 缓存）`;
+  } else {
+    note.textContent = rateLimited ? "（GitHub API 限额，请稍后重试）" : "（网络异常，请稍后重试）";
+  }
+
+  button.disabled = false;
+  button.classList.remove("is-loading");
+  button.querySelector("span").textContent = "刷新";
+  githubRefreshing = false;
+}
+
+function initGitHubStats() {
+  const cached = readGitHubCache();
+  if (cached) {
+    applyGitHubSnapshot(cached);
+    document.getElementById("gh-note").textContent = `（缓存于 ${syncTimeText(cached.timestamp)}）`;
+  }
+  document.getElementById("gh-refresh").addEventListener("click", () => refreshGitHub());
+  if (!cached || Date.now() - cached.timestamp > GITHUB_CACHE_MAX_AGE) refreshGitHub({ silent: true });
 }
 
 function bindTip() {
@@ -853,6 +977,7 @@ async function loadVisitorIp() {
 loadVisitorIp();
 renderPubs();
 bindTip();
+initGitHubStats();
 </script>
 </body>
 </html>
