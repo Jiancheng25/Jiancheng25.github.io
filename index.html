@@ -215,6 +215,9 @@ body.dark-bg {
 .pub-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; }
 .badge { padding: 2px 9px; border-radius: 10px; font-weight: 600; }
 .badge-venue { background: rgba(116,185,255,0.2); color: var(--accent); border: 1px solid rgba(116,185,255,0.4); }
+a.badge-venue { display: inline-block; text-decoration: none; transition: background .2s ease, border-color .2s ease; }
+a.badge-venue:hover { background: rgba(116,185,255,0.35); border-color: var(--accent); text-decoration: underline; }
+a.badge-venue:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .badge-year { background: rgba(255,255,255,0.12); color: #fff; }
 .badge-role { background: rgba(253,121,168,0.2); color: var(--accent2); border: 1px solid rgba(253,121,168,0.4); }
 .badge-status { background: rgba(0,184,148,0.2); color: #55efc4; border: 1px solid rgba(0,184,148,0.4); }
@@ -793,18 +796,13 @@ footer a { color: var(--accent); text-decoration: none; }
 const USER = "Jiancheng25";
 
 const PUBLICATIONS = [
-  { t:"Robust Label Propagation and Graph Embedding for Cross-Domain Image Classification", v:"IEEE IoT Journal", y:"2025", r:"二作", s:"published" },
-  { t:"Class-Conditioned Optimal Transport-based Sample Selection for Deep Adaptation Networks", v:"ACBD", y:"2025", r:"共同作者", s:"published" },
-  { t:"Multimodal Backdoor Attack on VLMs for Autonomous Driving via Graffiti and Cross-Lingual Triggers", v:"Pattern Analysis and Applications", y:"2026", r:"一作", s:"published" },
-  { t:"AirTrojan: Stealthy Backdoor Attacks on Wireless Modulation Classification Using Over-the-Air Trigger Injection", v:"EAI Mobimedia", y:"2026", r:"一作", s:"published" },
-  { t:"Domain Adaptive Object Detection via Dual-Stream Bilevel-Cycle Optimization", v:"ECCV", y:"2026", r:"共同作者", s:"published" },
-  { t:"DreamStealer: Black-Box Policy Extraction from World-Model Agents", v:"NeurIPS", y:"2026", r:"二作", s:"todo" },
-  { t:"CIVA: Critic-Induced Value-Subspace Attacks on Visual World-Model Agents", v:"NeurIPS", y:"2026", r:"一作", s:"rebuttal" },
-  { t:"Two-Stage Isotropic Whitening for Source-Free Test-Time Adaptation", v:"ICLR", y:"2027", r:"共同作者", s:"todo" },
-  { t:"Data Attribution without a Clean Reference: Influence-Guided Reweighting for Corruption-Robust Offline RL", v:"AAAI", y:"2027", r:"共同作者", s:"todo" },
-  { t:"PanWSR: Frequency-Conditioned Wavelet Scale-Recurrent Fusion for Pansharpening", v:"AAAI", y:"2027", r:"一作", s:"todo" },
-  { t:"Action Intent as a Bridge: Transferring Manipulation Knowledge from Human-Centric Videos to Robots", v:"AAAI", y:"2027", r:"共同作者", s:"todo" },
-  { t:"LiteOT-Fuse: Lightweight RGB–Thermal Semantic Segmentation via Spatially Constrained Local Optimal Transport", v:"ICESS 2026", y:"2026", r:"一作", s:"todo" }
+  { t:"Robust Label Propagation and Graph Embedding for Cross-Domain Image Classification", v:"IEEE IoT Journal", url:"https://ieeexplore.ieee.org/document/10742006", linkLabel:"论文详情（新标签页）", y:"2025", r:"二作", s:"published" },
+  { t:"Class-Conditioned Optimal Transport-based Sample Selection for Deep Adaptation Networks", v:"ACBD", url:"https://ieeexplore.ieee.org/document/11366696", linkLabel:"论文详情（新标签页）", y:"2025", r:"共同作者", s:"published" },
+  { t:"Multimodal Backdoor Attack on VLMs for Autonomous Driving via Graffiti and Cross-Lingual Triggers", v:"Pattern Analysis and Applications", url:"https://link.springer.com/article/10.1007/s10044-026-01724-w", linkLabel:"论文详情（新标签页）", y:"2026", r:"一作", s:"published" },
+  { t:"AirTrojan: Stealthy Backdoor Attacks on Wireless Modulation Classification Using Over-the-Air Trigger Injection", v:"EAI Mobimedia", url:"https://mobimedia.eai-conferences.org/2026/", linkLabel:"会议官网（新标签页）", y:"2026", r:"一作", s:"published" },
+  { t:"Domain Adaptive Object Detection via Dual-Stream Bilevel-Cycle Optimization", v:"ECCV", url:"https://link.springer.com/chapter/10.1007/978-3-032-37556-8_8", linkLabel:"论文详情（新标签页）", y:"2026", r:"共同作者", s:"published" },
+  { t:"Two-Stage Isotropic Whitening for Source-Free Test-Time Adaptation", v:"ICLR", url:"https://iclr.cc/Conferences/2027/index.html", linkLabel:"会议官网（新标签页）", y:"2027", r:"共同作者", s:"todo" },
+  { t:"LiteOT-Fuse: Lightweight RGB–Thermal Semantic Segmentation via Spatially Constrained Local Optimal Transport", v:"ICESS 2026", url:"https://ieee-hyper-intelligence.org/2026/icess/index.html", linkLabel:"会议官网（新标签页）", y:"2026", r:"一作", s:"published" }
 ];
 const STATUS_TEXT = { published:"已发表", todo:"在投", rebuttal:"Rebuttal 中" };
 
@@ -815,7 +813,7 @@ function renderPubs() {
     return `<div class="pub-item">
       <div class="pub-title">${p.t}</div>
       <div class="pub-meta">
-        <span class="badge badge-venue">${p.v}</span>
+        <a class="badge badge-venue" href="${p.url}" target="_blank" rel="noopener noreferrer" title="${p.linkLabel}" aria-label="${p.v}：${p.linkLabel}">${p.v}</a>
         <span class="badge badge-year">${p.y}</span>
         <span class="badge badge-role">${p.r}</span>
         <span class="badge badge-status ${sc}">${STATUS_TEXT[p.s]}</span>
