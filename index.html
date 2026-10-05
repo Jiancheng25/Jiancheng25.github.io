@@ -247,6 +247,26 @@ footer a { color: var(--accent); text-decoration: none; }
   .stats-line { flex-direction: column; align-items: flex-start; gap: 2px; }
   .stats-label { min-width: auto; }
 }
+
+/* Homepage visit counter */
+.github-stats-heading {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 20px;
+}
+.github-stats-heading h2 { margin-bottom: 0; }
+.visit-counter {
+  display: inline-flex; align-items: center; gap: 7px; margin-left: auto;
+  padding: 7px 12px; border: 1px solid rgba(116,185,255,0.35);
+  border-radius: 12px; background: rgba(116,185,255,0.12);
+  color: rgba(255,255,255,0.85); font-size: 13px;
+  max-width: 100%; flex-wrap: wrap;
+}
+.visit-counter > i { color: var(--accent); }
+.visit-counter strong { color: var(--accent); font-variant-numeric: tabular-nums; }
+.visit-counter [hidden] { display: none; }
+@media (max-width: 480px) {
+  .visit-counter { font-size: 12px; padding: 6px 9px; }
+}
 </style>
 </head>
 <body>
@@ -333,7 +353,15 @@ footer a { color: var(--accent); text-decoration: none; }
 
   <main class="content-area">
     <section class="card github-stats">
-      <h2><i class="fa-solid fa-chart-line"></i> GitHub 数据</h2>
+      <div class="github-stats-heading">
+        <h2><i class="fa-solid fa-chart-line"></i> GitHub 数据</h2>
+        <div class="visit-counter" title="累计页面访问次数（PV），重复访问或刷新也会计入；由不蒜子提供统计。" role="status" aria-live="polite">
+          <i class="fa-solid fa-eye" aria-hidden="true"></i>
+          <span>访问量</span>
+          <span id="visit-counter-status">加载中…</span>
+          <span id="visit-counter-result" hidden><strong id="busuanzi_value_site_pv"></strong> 次</span>
+        </div>
+      </div>
       <div class="stats-line"><span class="stats-label">公开仓库</span><span class="stats-text"><span class="highlight-number" id="gh-repos">7</span> 个</span></div>
       <div class="stats-line"><span class="stats-label">关注者</span><span class="stats-text"><span class="highlight-number" id="gh-followers">0</span> 人</span></div>
       <div class="stats-line"><span class="stats-label">关注中</span><span class="stats-text"><span class="highlight-number" id="gh-following">2</span> 人</span></div>
@@ -979,6 +1007,37 @@ loadVisitorIp();
 renderPubs();
 bindTip();
 initGitHubStats();
+</script>
+<script>
+
+// Only the deployed homepage loads the shared counter; local previews do not count.
+(function initVisitCounter() {
+  const status = document.getElementById('visit-counter-status');
+  const result = document.getElementById('visit-counter-result');
+  const value = document.getElementById('busuanzi_value_site_pv');
+  if (location.hostname !== 'jiancheng25.github.io') {
+    status.textContent = '上线后统计';
+    return;
+  }
+  let timer;
+  const observer = new MutationObserver(function () {
+    if (!/^\d+$/.test(value.textContent.trim())) return;
+    clearTimeout(timer);
+    status.hidden = true;
+    result.hidden = false;
+    observer.disconnect();
+  });
+  observer.observe(value, { childList: true, subtree: true, characterData: true });
+  const unavailable = function () {
+    if (result.hidden) status.textContent = '暂不可用';
+  };
+  timer = setTimeout(unavailable, 12000);
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+  script.onerror = function () { clearTimeout(timer); unavailable(); };
+  document.body.appendChild(script);
+})();
 </script>
 </body>
 </html>
