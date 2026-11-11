@@ -311,9 +311,33 @@ footer a { color: var(--accent); text-decoration: none; }
 @media (max-width: 480px) {
   .visit-counter { font-size: 12px; padding: 6px 9px; }
 }
+.language-toolbar { max-width: 1400px; margin: 0 auto; padding: 20px 30px 0; display: flex; justify-content: flex-end; }
+.language-switch { display: inline-flex; padding: 4px; gap: 4px; border: 1px solid var(--border); border-radius: 12px; background: rgba(20,44,85,0.4); }
+.language-switch button { border: 0; border-radius: 8px; background: transparent; color: #d8e7fc; padding: 7px 13px; font: inherit; font-size: 13px; cursor: pointer; }
+.language-switch button[aria-pressed="true"] { background: #c0e3ff; color: #173d6b; font-weight: 700; }
+.language-switch button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.experience-entry { display: flex; gap: 16px; padding: 20px; background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; }
+.experience-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 44px; height: 44px; color: #ffda85; background: rgba(255,218,133,0.14); border-radius: 12px; font-size: 22px; }
+.experience-content { min-width: 0; }
+.experience-content h3 { font-size: 16px; line-height: 1.5; margin-bottom: 8px; }
+.experience-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #d3e2f6; }
+.experience-content p { font-size: 13px; line-height: 1.7; color: #dce7f7; margin-top: 12px; }
+html[lang="en"] .stats-label { min-width: 135px; }
+html[lang="en"] .skills-icons { grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); }
+html[lang="en"] .skill-icon { overflow-wrap: normal; font-size: 12px; line-height: 1.45; }
+html[lang="en"] .profile-en { display: none; }
+html[lang="en"] .timeline-title { line-height: 1.5; }
+@media (max-width: 768px) {
+  .language-toolbar { padding: 16px 18px 0; }
+  .experience-entry { padding: 16px; gap: 12px; }
+  html[lang="en"] .stats-label { min-width: auto; }
+}
 </style>
 </head>
 <body>
+<nav class="language-toolbar" aria-label="Language / 语言">
+  <div class="language-switch"><button type="button" data-language="zh" aria-pressed="true" lang="zh-CN">中文</button><button type="button" data-language="en" aria-pressed="false" lang="en">English</button></div>
+</nav>
 <div class="main-container">
   <aside class="sidebar">
     <div class="profile-section">
@@ -435,6 +459,18 @@ footer a { color: var(--accent); text-decoration: none; }
     <section class="card">
       <h2><i class="fa-solid fa-flask"></i> 科研经历 / 论文</h2>
       <div class="pub-list" id="pubs"></div>
+    </section>
+
+    <section class="card project-experience" aria-labelledby="project-experience-title">
+      <h2 id="project-experience-title"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> 项目经历</h2>
+      <article class="experience-entry">
+        <div class="experience-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+        <div class="experience-content">
+          <h3>中国南方电网 · 超高压输电公司</h3>
+          <div class="experience-meta"><time datetime="2025-09-08">2025.09.08</time><span>–</span><time datetime="2025-09-28">2025.09.28</time><span class="badge badge-venue">企业出差</span></div>
+          <p>赴中国南方电网超高压输电公司出差。</p>
+        </div>
+      </article>
     </section>
 
     <section class="card contribution-section">
@@ -1087,6 +1123,96 @@ initGitHubStats();
   script.onerror = function () { clearTimeout(timer); unavailable(); };
   document.body.appendChild(script);
 })();
+</script>
+<script>
+
+(function () {
+  const translations = {"王建成":"Jiancheng Wang","王":"J","安徽大学 · 计算机技术硕士（2024–）":"Master’s Student in Computer Technology · Anhui University (2024–present)","面向开放环境的":"Robust learning and security for ","视觉与多模态智能系统":"visual and multimodal intelligent systems","鲁棒学习与安全，关注分布偏移下的跨域泛化、多模态融合，以及视觉语言模型与世界模型智能体的后门与对抗安全。":" in open environments, focusing on cross-domain generalization under distribution shift, multimodal fusion, and backdoor and adversarial security of vision–language models and world-model agents.","教育邮箱":"University Email","跨域泛化":"Cross-Domain Generalization","多模态融合":"Multimodal Fusion","视觉语言模型":"Vision–Language Models","世界模型智能体":"World-Model Agents","后门攻击":"Backdoor Attacks","对抗安全":"Adversarial Security","语义分割":"Semantic Segmentation","遥感图像融合":"Remote Sensing Image Fusion","欢迎您":"Welcome","访客 IP：":"Visitor IP: ","南方科技大学 · 研究助理（RA）":"Southern University of Science and Technology · Research Assistant","中山大学 · 访问学习":"Sun Yat-sen University · Visiting Student","安徽大学 · 计算机技术（硕士）":"Anhui University · Master’s in Computer Technology","西南科技大学 · 软件工程（本科）":"Southwest University of Science and Technology · Undergraduate Studies in Software Engineering","西南科技大学 · 医学影像技术（本科）":"Southwest University of Science and Technology · Undergraduate Studies in Medical Imaging Technology","2026.09 – 至今":"2026.09 – present","2024.09 – 至今":"2024.09 – present","导师：":"Advisor: ","王真伊 副教授":"Assoc. Prof. Zhenyi Wang","王维 副教授":"Assoc. Prof. Wei Wang","严远亭 教授":"Prof. Yuanting Yan","张杨松 教授":"Prof. Yangsong Zhang","何刚":"Gang He","GitHub 数据":"GitHub Statistics","访问量":"Page views","加载中…":"Loading…","次":"views","个":"repos","人":"users","公开仓库":"Public Repositories","关注者":"Followers","关注中":"Following","获得 Star":"Stars Received","常用语言":"Top Languages","刷新":"Refresh","刷新中":"Refreshing","（正在检查更新…）":"(Checking for updates…)","（正在连接 GitHub…）":"(Connecting to GitHub…)","（GitHub API 限额，请稍后重试）":"(GitHub API rate limit; please try again later)","（网络异常，请稍后重试）":"(Network unavailable; please try again later)","研究方向 & 技能":"Research Interests & Skills","多模态学习":"Multimodal Learning","对抗/后门安全":"Adversarial / Backdoor Security","计算机视觉":"Computer Vision","分布偏移泛化":"Generalization under Distribution Shift","自动驾驶感知":"Autonomous Driving Perception","科研经历 / 论文":"Research & Publications","贡献活跃度":"Contribution Activity","一":"Mon","三":"Wed","五":"Fri","过去一年共":"Past year: ","次贡献":" contributions","少":"Less","多":"More","GitHub 项目":"GitHub Projects","记录我的科研绘图":"Research figures and illustrations","© 2026 王建成 (Jiancheng Wang) · 安徽大学 · Built with":"© 2026 Jiancheng Wang · Anhui University · Built with","二作":"Second Author","一作":"First Author","共同作者":"Co-author","已发表":"Published","在投":"Under Review","Rebuttal 中":"In Rebuttal","论文详情（新标签页）":"Paper details (opens in a new tab)","会议官网（新标签页）":"Conference website (opens in a new tab)","上线后统计":"Available on the live site","暂不可用":"Temporarily unavailable","切换深色背景":"Toggle dark background","OpenReview 个人主页":"OpenReview Profile","项目":"Projects","联系邮箱":"Contact Emails","安徽大学":"Anhui University","累计页面访问次数（PV），重复访问或刷新也会计入；由开源不蒜子提供统计；统计服务更换后重新累计。":"Total page views, including repeat visits and refreshes. Powered by open-source Busuanzi; counting restarted after switching services.","项目经历":"Project Experience","中国南方电网 · 超高压输电公司":"China Southern Power Grid · EHV Power Transmission Company","企业出差":"Business Visit","赴中国南方电网超高压输电公司出差。":"Business visit to China Southern Power Grid’s EHV Power Transmission Company.","王建成 · 个人主页":"Jiancheng Wang · Personal Homepage","王建成 (Jiancheng Wang) · 安徽大学计算机技术硕士 · 面向开放环境的视觉与多模态智能系统鲁棒学习与安全":"Jiancheng Wang · Master’s Student in Computer Technology, Anhui University · Robust learning and security for visual and multimodal intelligent systems in open environments"};
+  const textState = new WeakMap();
+  const attributeState = new WeakMap();
+  let language = 'zh';
+  function english(text) {
+    if (Object.prototype.hasOwnProperty.call(translations, text)) return translations[text];
+    let m;
+    if ((m = text.match(/^发表年份 (\d{4})$/))) return 'Publication year ' + m[1];
+    if ((m = text.match(/^（更新于 (.+)）$/))) return '(Updated ' + m[1] + ')';
+    if ((m = text.match(/^（缓存于 (.+)）$/))) return '(Cached ' + m[1] + ')';
+    if ((m = text.match(/^（GitHub 限额，显示 (.+) 缓存）$/))) return '(GitHub rate limit; cached ' + m[1] + ')';
+    if ((m = text.match(/^（网络异常，显示 (.+) 缓存）$/))) return '(Network unavailable; cached ' + m[1] + ')';
+    if ((m = text.match(/^(.+) · (\d+) 次贡献$/))) return m[1] + ' · ' + m[2] + ' contributions';
+    return text;
+  }
+  function translated(raw) {
+    const key = raw.trim();
+    return language === 'en' && key ? raw.replace(key, english(key)) : raw;
+  }
+  function text(node) {
+    if (!node.parentElement || node.parentElement.closest('script, style, [data-language]')) return;
+    const old = textState.get(node);
+    const raw = old && node.nodeValue === old.rendered ? old.raw : node.nodeValue;
+    const rendered = translated(raw);
+    textState.set(node, { raw, rendered });
+    if (node.nodeValue !== rendered) node.nodeValue = rendered;
+  }
+  function attributes(element) {
+    let state = attributeState.get(element);
+    if (!state) { state = {}; attributeState.set(element, state); }
+    for (const name of ['title', 'aria-label', 'alt']) {
+      if (!element.hasAttribute(name)) continue;
+      const value = element.getAttribute(name);
+      const old = state[name];
+      const raw = old && value === old.rendered ? old.raw : value;
+      const rendered = translated(raw);
+      state[name] = { raw, rendered };
+      if (value !== rendered) element.setAttribute(name, rendered);
+    }
+  }
+  function update(root) {
+    if (root.nodeType === 3) { text(root); return; }
+    if (root.nodeType !== 1 && root.nodeType !== 9) return;
+    if (root.nodeType === 1) attributes(root);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeType === 3) text(node);
+      else attributes(node);
+    }
+  }
+  const description = document.querySelector('meta[name="description"]');
+  const originalDescription = description.content;
+  const originalTitle = document.title;
+  function setLanguage(next, remember) {
+    language = next === 'en' ? 'en' : 'zh';
+    document.documentElement.lang = language === 'en' ? 'en' : 'zh-CN';
+    update(document.body);
+    document.title = language === 'en' ? english(originalTitle) : originalTitle;
+    description.content = language === 'en' ? english(originalDescription) : originalDescription;
+    document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+    document.getElementById('tip').classList.remove('show');
+    if (remember) {
+      try { localStorage.setItem('jiancheng25-language', language); } catch (_) {}
+      try {
+        const url = new URL(location.href);
+        if (language === 'en') url.searchParams.set('lang', 'en');
+        else url.searchParams.delete('lang');
+        history.replaceState(null, '', url);
+      } catch (_) {}
+    }
+  }
+  document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
+  let saved = 'zh';
+  try { saved = localStorage.getItem('jiancheng25-language') || 'zh'; } catch (_) {}
+  const requested = new URLSearchParams(location.search).get('lang');
+  setLanguage(requested === 'en' || requested === 'zh' ? requested : saved, false);
+  new MutationObserver(records => {
+    for (const record of records) {
+      if (record.type === 'characterData') text(record.target);
+      else if (record.type === 'attributes') attributes(record.target);
+      else record.addedNodes.forEach(update);
+    }
+  }).observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['title', 'aria-label', 'alt'] });
+})();
+
 </script>
 </body>
 </html>
