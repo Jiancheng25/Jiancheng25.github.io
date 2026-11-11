@@ -152,24 +152,35 @@ body.dark-bg {
   .welcome-card.active .wc-body { max-height: 220px; padding: 2px 16px 16px; }
 }
 .timeline-section { padding-left: 26px; }
-.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item { position: relative; margin-bottom: 22px; }
 .timeline-item:last-child { margin-bottom: 0; }
 .timeline-item:not(:last-child)::before {
   content: ''; position: absolute; z-index: 0;
-  left: -21px; top: 6px; bottom: -26px; width: 2px;
-  background: linear-gradient(180deg, rgba(116,185,255,0.95), rgba(255,255,255,0.3));
+  left: -21px; top: 14px; bottom: -22px; width: 2px;
+  background: rgba(205,221,240,0.18);
 }
 .timeline-dot {
-  position: absolute; z-index: 1; left: -26px; top: 0;
-  width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.5);
-  box-shadow: 0 0 0 3px rgba(116,185,255,0.14), 0 0 10px rgba(116,185,255,0.45);
+  position: absolute; z-index: 1; left: -26px; top: 3px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #6b87ad; border: 2px solid #9bafca;
+  box-shadow: none;
 }
-.timeline-title { font-size: 13.5px; font-weight: 600; line-height: 1.35; }
-.timeline-date { font-size: 12px; opacity: 0.7; }
-.timeline-note { margin-top: 2px; font-size: 12px; opacity: 0.82; }
-.timeline-note a { color: var(--accent); text-decoration: none; }
-.timeline-note a:hover { text-decoration: underline; }
+.timeline-item.is-current .timeline-dot {
+  background: #d8f1ff; border-color: #8bd0ff;
+  box-shadow: 0 0 0 4px rgba(116,185,255,0.16), 0 0 14px rgba(116,185,255,0.65);
+}
+.timeline-item.is-current:not(:last-child)::before {
+  background: linear-gradient(180deg, rgba(139,208,255,0.6), rgba(205,221,240,0.18));
+}
+.timeline-title { font-size: 13.5px; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,0.78); }
+.timeline-date { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+.timeline-note { margin-top: 3px; font-size: 12px; color: rgba(255,255,255,0.72); }
+.timeline-note a { color: #a9c7e8; text-decoration: none; }
+.timeline-note a:hover { color: #e0f3ff; text-decoration: underline; }
+.timeline-note a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.timeline-item.is-current .timeline-title { color: #fff; }
+.timeline-item.is-current .timeline-date { color: #c6e9ff; }
+.timeline-item.is-current .timeline-note a { color: #8bd0ff; }
 .content-area { display: flex; flex-direction: column; gap: 25px; min-width: 0; }
 .card {
   background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -328,32 +339,32 @@ footer a { color: var(--accent); text-decoration: none; }
       </div>
     </div>
     <div class="timeline-section">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item is-current">
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-title">南方科技大学 · 研究助理（RA）</div>
         <div class="timeline-date">2026.09 – 至今</div>
         <div class="timeline-note">导师：<a href="https://www.sustech.edu.cn/zh/faculties/wangzhenyi.html" target="_blank" rel="noopener noreferrer">王真伊 副教授</a></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item is-past">
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-title">中山大学 · 访问学习</div>
         <div class="timeline-date">2025.08 – 2026.06</div>
         <div class="timeline-note">导师：<a href="https://scst.sysu.edu.cn/teacher/346" target="_blank" rel="noopener noreferrer">王维 副教授</a></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item is-current">
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-title">安徽大学 · 计算机技术（硕士）</div>
         <div class="timeline-date">2024.09 – 至今</div>
         <div class="timeline-note">导师：<a href="https://cs.ahu.edu.cn/2021/1216/c20806a277197/page.htm" target="_blank" rel="noopener noreferrer">严远亭 教授</a></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item is-past">
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-title">西南科技大学 · 软件工程（本科）</div>
         <div class="timeline-date">2021.09 – 2024.06</div>
         <div class="timeline-note">导师：<a href="https://cs.swust.edu.cn/2024/0430/c11137a194214/page.htm" target="_blank" rel="noopener noreferrer">张杨松 教授</a></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
+      <div class="timeline-item is-past">
+        <div class="timeline-dot" aria-hidden="true"></div>
         <div class="timeline-title">西南科技大学 · 医学影像技术（本科）</div>
         <div class="timeline-date">2020.09 – 2021.06</div>
         <div class="timeline-note">导师：<a href="https://www.scholarmate.com/P/NN73a2" target="_blank" rel="noopener noreferrer">何刚</a></div>
