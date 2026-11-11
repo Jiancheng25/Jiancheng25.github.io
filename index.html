@@ -231,9 +231,9 @@ body.dark-bg {
 .pub-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; }
 .badge { padding: 2px 9px; border-radius: 10px; font-weight: 600; }
 .badge-venue { background: rgba(116,185,255,0.2); color: var(--accent); border: 1px solid rgba(116,185,255,0.4); }
-a.badge-venue { display: inline-block; text-decoration: none; transition: background .2s ease, border-color .2s ease; }
-a.badge-venue:hover { background: rgba(116,185,255,0.35); border-color: var(--accent); text-decoration: underline; }
-a.badge-venue:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.pub-title a { color: inherit; text-decoration: none; transition: color .2s ease; }
+.pub-title a:hover { color: #b8e4ff; text-decoration: underline; text-underline-offset: 4px; }
+.pub-title a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
 .badge-year { background: rgba(255,255,255,0.12); color: #fff; }
 .badge-role { background: rgba(253,121,168,0.2); color: var(--accent2); border: 1px solid rgba(253,121,168,0.4); }
 .badge-status { background: rgba(0,184,148,0.2); color: #55efc4; border: 1px solid rgba(0,184,148,0.4); }
@@ -242,7 +242,20 @@ a.badge-venue:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .skills-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px,1fr)); gap: 14px; }
 .skill-icon { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 10px 6px; text-align: center; font-size: 12px; transition: all .3s ease; }
 .skill-icon:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
-.skill-icon i { display: block; font-size: 22px; color: #fff; margin-bottom: 5px; }
+.skill-icon { --skill-color: #a8dcff; --skill-tint: rgba(168,220,255,0.14); }
+.skill-icon:nth-child(2) { --skill-color: #7eefd0; --skill-tint: rgba(126,239,208,0.14); }
+.skill-icon:nth-child(3) { --skill-color: #d6bbff; --skill-tint: rgba(214,187,255,0.14); }
+.skill-icon:nth-child(4) { --skill-color: #8de6ff; --skill-tint: rgba(141,230,255,0.14); }
+.skill-icon:nth-child(5) { --skill-color: #ffda85; --skill-tint: rgba(255,218,133,0.14); }
+.skill-icon:nth-child(6) { --skill-color: #ffb2cb; --skill-tint: rgba(255,178,203,0.14); }
+.skill-icon:nth-child(7) { --skill-color: #b9e994; --skill-tint: rgba(185,233,148,0.14); }
+.skill-icon:nth-child(8) { --skill-color: #ffbe98; --skill-tint: rgba(255,190,152,0.14); }
+.skill-icon i {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; margin: 0 auto 8px; border-radius: 12px;
+  font-size: 23px; color: var(--skill-color); background: var(--skill-tint);
+  box-shadow: inset 0 0 0 1px var(--skill-tint);
+}
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
 .proj-card { background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; padding: 16px; transition: all .3s ease; text-decoration: none; color: inherit; display: block; }
 .proj-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
@@ -862,9 +875,9 @@ function renderPubs() {
   box.innerHTML = PUBLICATIONS.map(p => {
     const sc = p.s === "rebuttal" ? "rebuttal" : (p.s === "todo" ? "todo" : "");
     return `<div class="pub-item">
-      <div class="pub-title">${p.t}</div>
+      <div class="pub-title"><a href="${p.url}" target="_blank" rel="noopener noreferrer" title="${p.linkLabel}">${p.t}</a></div>
       <div class="pub-meta">
-        <a class="badge badge-venue" href="${p.url}" target="_blank" rel="noopener noreferrer" title="${p.linkLabel}" aria-label="${p.v}：${p.linkLabel}">${p.v}</a>
+        <span class="badge badge-venue">${p.v}</span>
         <span class="badge badge-year">${p.y}</span>
         <span class="badge badge-role">${p.r}</span>
         <span class="badge badge-status ${sc}">${STATUS_TEXT[p.s]}</span>
