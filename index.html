@@ -93,6 +93,11 @@ body.dark-bg {
   border: 1px solid var(--border); font-size: 18px;
 }
 .social-links a:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+.contact-emails { display: grid; gap: 10px; margin-bottom: 24px; }
+.contact-emails a { display: block; color: #fff; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; text-decoration: none; padding: 10px 12px; border-radius: 12px; background: var(--glass-strong); border: 1px solid var(--border); }
+.contact-emails a span { display: block; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
+.contact-emails a:hover { background: rgba(255,255,255,0.15); }
+.contact-emails a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .tags-section { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 .tag {
   background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
@@ -291,7 +296,12 @@ footer a { color: var(--accent); text-decoration: none; }
     <div class="social-links">
       <a href="https://github.com/Jiancheng25" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
       <a href="mailto:e24301271@stu.ahu.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://openreview.net/profile?id=~Jiancheng_Wang2" target="_blank" rel="noopener noreferrer" title="OpenReview 个人主页" aria-label="OpenReview 个人主页"><i class="fa-solid fa-book-open"></i></a>
       <a href="https://github.com/Jiancheng25?tab=repositories" target="_blank" title="项目"><i class="fa-solid fa-code"></i></a>
+    </div>
+    <div class="contact-emails" aria-label="联系邮箱">
+      <a href="mailto:e24301271@stu.ahu.edu.cn"><span>教育邮箱</span>e24301271@stu.ahu.edu.cn</a>
+      <a href="mailto:wjc2360784351@gmail.com"><span>Gmail</span>wjc2360784351@gmail.com</a>
     </div>
     <div class="tags-section">
       <span class="tag">跨域泛化</span>
@@ -355,7 +365,7 @@ footer a { color: var(--accent); text-decoration: none; }
     <section class="card github-stats">
       <div class="github-stats-heading">
         <h2><i class="fa-solid fa-chart-line"></i> GitHub 数据</h2>
-        <div class="visit-counter" title="累计页面访问次数（PV），重复访问或刷新也会计入；由不蒜子提供统计。" role="status" aria-live="polite">
+        <div class="visit-counter" title="累计页面访问次数（PV），重复访问或刷新也会计入；由开源不蒜子提供统计；统计服务更换后重新累计。" role="status" aria-live="polite">
           <i class="fa-solid fa-eye" aria-hidden="true"></i>
           <span>访问量</span>
           <span id="visit-counter-status">加载中…</span>
@@ -832,7 +842,6 @@ const PUBLICATIONS = [
   { t:"Multimodal Backdoor Attack on VLMs for Autonomous Driving via Graffiti and Cross-Lingual Triggers", v:"Pattern Analysis and Applications", url:"https://link.springer.com/article/10.1007/s10044-026-01724-w", linkLabel:"论文详情（新标签页）", y:"2026", r:"一作", s:"published" },
   { t:"AirTrojan: Stealthy Backdoor Attacks on Wireless Modulation Classification Using Over-the-Air Trigger Injection", v:"EAI Mobimedia", url:"https://mobimedia.eai-conferences.org/2026/", linkLabel:"会议官网（新标签页）", y:"2026", r:"一作", s:"published" },
   { t:"Domain Adaptive Object Detection via Dual-Stream Bilevel-Cycle Optimization", v:"ECCV", url:"https://link.springer.com/chapter/10.1007/978-3-032-37556-8_8", linkLabel:"论文详情（新标签页）", y:"2026", r:"共同作者", s:"published" },
-  { t:"Two-Stage Isotropic Whitening for Source-Free Test-Time Adaptation", v:"ICLR", url:"https://iclr.cc/Conferences/2027/index.html", linkLabel:"会议官网（新标签页）", y:"2027", r:"共同作者", s:"todo" },
   { t:"LiteOT-Fuse: Lightweight RGB–Thermal Semantic Segmentation via Spatially Constrained Local Optimal Transport", v:"ICESS 2026", url:"https://ieee-hyper-intelligence.org/2026/icess/index.html", linkLabel:"会议官网（新标签页）", y:"2026", r:"一作", s:"published" }
 ];
 const STATUS_TEXT = { published:"已发表", todo:"在投", rebuttal:"Rebuttal 中" };
@@ -1034,7 +1043,8 @@ initGitHubStats();
   timer = setTimeout(unavailable, 12000);
   const script = document.createElement('script');
   script.async = true;
-  script.src = 'https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js';
+  script.src = 'https://busuanzi.9420.ltd/js';
+  script.setAttribute('data-api', 'https://bsz.iirose.cn/api');
   script.onerror = function () { clearTimeout(timer); unavailable(); };
   document.body.appendChild(script);
 })();
