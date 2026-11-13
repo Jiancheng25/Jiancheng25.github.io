@@ -322,6 +322,11 @@ footer a { color: var(--accent); text-decoration: none; }
 .language-switch button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .experience-entry { display: flex; gap: 16px; padding: 20px; background: var(--glass-strong); border: 1px solid var(--border); border-radius: 14px; }
 .experience-icon { display: flex; align-items: center; justify-content: center; flex: 0 0 44px; height: 44px; color: #ffda85; background: rgba(255,218,133,0.14); border-radius: 12px; font-size: 22px; }
+.experience-logo { background: #fff; }
+.experience-logo img { display: block; width: 36px; height: 28px; object-fit: contain; }
+.experience-content h3 a { color: inherit; text-decoration: none; }
+.experience-content h3 a:hover { color: #b8e4ff; text-decoration: underline; text-underline-offset: 4px; }
+.experience-content h3 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
 .experience-content { min-width: 0; }
 .experience-content h3 { font-size: 16px; line-height: 1.5; margin-bottom: 8px; }
 .experience-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; color: #d3e2f6; }
@@ -457,9 +462,9 @@ html[lang="en"] .timeline-title { line-height: 1.5; }
     <section class="card project-experience" aria-labelledby="project-experience-title">
       <h2 id="project-experience-title"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> 项目经历</h2>
       <article class="experience-entry">
-        <div class="experience-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+        <div class="experience-icon experience-logo" aria-hidden="true"><img src="/assets/csg-logo.png" alt="" width="36" height="28"></div>
         <div class="experience-content">
-          <h3>中国南方电网 · 超高压输电公司</h3>
+          <h3><a href="https://www.ehv.csg.cn/" target="_blank" rel="noopener noreferrer">中国南方电网 · 超高压输电公司</a></h3>
           <div class="experience-meta"><time datetime="2025-09-08">2025.09.08</time><span>–</span><time datetime="2025-09-28">2025.09.28</time><span class="badge badge-venue">企业出差</span></div>
           <p>赴中国南方电网超高压输电公司出差。</p>
         </div>
